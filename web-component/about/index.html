@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Web Components Test</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/index.css">
+		<script src="/components/header/header.js"></script>
+		<script src="/components/aboutvmv/aboutvmv.js"></script>
+	</head>
+	<body>
+		<my-header path="/about"></my-header>
+		<main>
+			<about-vmv></about-vmv>
+		</main>
+		<script type="text/javascript">			
+			fetch("/data/vmv.json")
+				.then(res => res.json()
+					.then(json => {
+						const vmv = document.querySelector("about-vmv");
+						vmv.setAttribute("data", JSON.stringify(json));
+					})
+				);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Web Components Test</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/index.css">
+		<script src="/components/home/home.js"></script>
+		<script src="/components/aboutvmv/aboutvmv.js"></script>
+		<script src="/components/frmcontact/frmcontact.js"></script>
+		<style>
+			body > * {
+				align-self: center;
+			}
+			
+			h2 {
+				padding: 20px 0 0 0;
+			}
+			
+			a {
+				color: black;
+				text-decoration: none;
+			}
+			
+			a:hover {
+				color: red;
+			}
+			
+			form-contact {
+				padding: 0 0 20px 0;
+			}
+		</style>
+	</head>
+	<body>
+		<h2><a href="/">Home</a></h2>
+		<my-home></my-home>
+		<h2><a href="/about">About</a></h2>
+		<about-vmv></about-vmv>
+		<h2><a href="/contact">Contact</a></h2>
+		<form-contact></form-contact>
+		<script type="text/javascript">			
+			fetch("/data/vmv.json")
+				.then(res => res.json()
+					.then(json => {
+						const vmv = document.querySelector("about-vmv");
+						vmv.setAttribute("data", JSON.stringify(json));
+					})
+				);
+		</script>
+	</body>
+</html>
